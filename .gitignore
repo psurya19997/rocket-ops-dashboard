@@ -1,0 +1,13 @@
+# Only the files Streamlit needs to run are tracked. Everything else is ignored by default.
+*
+
+!.gitignore
+!README.md
+!requirements.txt
+!app.py
+
+!src/
+!src/*.py
+
+!.streamlit/
+!.streamlit/secrets.toml.example
