@@ -138,8 +138,8 @@ def run_etl():
     df['district_local'] = [p[1] for p in parts]
     m = (df['level'] == 'district') & ~df['is_total'] & ~df['is_unmapped']
     df.loc[m, 'unit_name'] = df.loc[m, 'district']  # English name only
-    df['product_primary'] = df['product_name'].astype(str).map(
-        lambda x: 'Unknown' if x == 'nan' else x.split(',')[0].strip())
+    df['product_primary'] = df['product_name'].map(
+        lambda x: 'Unknown' if pd.isna(x) else str(x).split(',')[0].strip())
 
     # Same unit loaded twice for a date (re-runs/duplicates): keep the last row.
     before = len(df)
